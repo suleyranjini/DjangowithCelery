@@ -1,0 +1,19 @@
+<html>
+    <head></head>
+    <body>
+        <a href="{% url 'list' %}">See results</a>
+
+        <hr>
+
+        <form method="post">
+            {% csrf_token %}
+            <label for="calculation">
+            <input type="number" name="n1" id="n1">
+            <input type="number" name="n2" id="n2">
+            <input type="text" name="op" id="op">
+            
+            <input type="submit" value="Submit">
+            <input type="reset">
+        </form>
+    </body>
+</html>

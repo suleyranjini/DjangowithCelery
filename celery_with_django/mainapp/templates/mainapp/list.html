@@ -1,0 +1,26 @@
+<html>
+<head></head>
+<body>
+    <a href="{% url 'calculate' %}">Start a new calculation</a>
+
+    <hr>
+
+    <ul>
+        {% for calculation in calculations %}
+        <li>{{ calculation.oper }} - Started
+            <ul>
+                <li>Status: {{ calculation.status }}</li>
+                <li>Input: {{ calculation.input1 }}</li>
+                <li>Input: {{ calculation.input2 }}</li>
+                <li>Output:
+                    {% if calculation.output %}
+                        {{ calculation.output }}
+                    {% else %}
+                        Calculating...
+                    {% endif %}
+                </li>
+            </ul>
+        </li>
+        {% endfor %}
+</body>
+</html>
