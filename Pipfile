@@ -9,6 +9,9 @@ celery = "*"
 redis = "*"
 django-celery-results = "*"
 django-celery-beat = "*"
+djangorestframework = "*"
+markdown = "*"
+django-filter = "*"
 
 [dev-packages]
 

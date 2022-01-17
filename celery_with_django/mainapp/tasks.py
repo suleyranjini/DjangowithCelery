@@ -2,6 +2,8 @@ from celery import shared_task
 from .models import Calculation, Fruit
 from django_celery_project.celery import app
 
+from celery.schedules import crontab
+
 @shared_task(bind=True)
 def test_func(self):
     for i in range(10):
@@ -52,3 +54,11 @@ def fruit_task(self):
         fruits = Fruit.objects.create(name=key,colour=value)
         fruits.save()
     return "Fruits Saved"
+
+@app.on_after_finalize.connect
+def setup_periodic_tasks(sender, **kwargs):
+    # Call at 12:05pm.
+    sender.add_periodic_task(
+        crontab(hour = 12, minute = 7),
+        fruit_task
+    )

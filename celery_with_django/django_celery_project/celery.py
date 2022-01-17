@@ -19,13 +19,13 @@ app.conf.update(timezone = 'Asia/Kolkata')
 app.config_from_object('django.conf:settings',namespace = 'CELERY')
 
 #Celery Beat settings
-app.conf.beat_schedule = {
-    'insert-fruits':{
-        'task':'mainapp.tasks.fruit_task',
-        'schedule': crontab(hour = 22, minute = 52)
+# app.conf.beat_schedule = {
+#     'insert-fruits':{
+#         'task':'mainapp.tasks.fruit_task',
+#         'schedule': crontab(hour = 22, minute = 52)
         
-    }
-}
+#     }
+# }
 
 #THis is to load task modules from all registered Django app configs
 app.autodiscover_tasks()
